@@ -1,0 +1,32 @@
+* {
+  border: 1px solid red;
+}
+
+.body {
+  background-color: black;
+
+}
+
+.page {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.page__container {
+  max-width: 1280px;
+  margin: 0;
+}
+
+.header. {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 48px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 142px;
+  height: 33px;
+}
