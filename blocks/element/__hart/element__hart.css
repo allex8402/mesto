@@ -1,0 +1,14 @@
+ .element__hart {
+  width: 22px;
+  height: 19px;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
+ }
+
+ .element__hart:hover {
+  opacity: 0.5;
+ }
+
+ .element__hart:active {
+  background-image: url(../../../images/vector_black.png);
+ }
