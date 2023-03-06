@@ -1,6 +1,8 @@
 # Проектная работа
 
-Ссылка: https://allex8402.github.io/russian-travel/
+https://allex8402.github.io/mesto/
+
+
 
 ---
 
