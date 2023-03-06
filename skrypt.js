@@ -1,5 +1,5 @@
 let popup = document.querySelector('.popup');
-let openButton = document.querySelector('.popup__open-icon');
+let openButton = document.querySelector('.profile__rectangle');
 let closeButton = popup.querySelector('.popup__close-icon');
 let saveButton = popup.querySelector('.popup__button')
 let nameInput = popup.querySelector('.popup__input_name');
