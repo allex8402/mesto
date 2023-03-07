@@ -4,6 +4,9 @@
  align-items: end;
  margin: 0 0 16px 0;
  max-height: 39px;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ overflow-x: hidden;
 
 }
 
