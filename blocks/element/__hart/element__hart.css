@@ -1,8 +1,13 @@
  .element__hart {
+  background-image: url(../../../images/Vector_hart.svg);
   width: 22px;
   height: 19px;
   margin: 5px 5px 0 0;
   cursor: pointer;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
  }
 
  .element__hart:hover {
@@ -10,5 +15,5 @@
  }
 
  .element__hart:active {
-  background-image: url(../../../images/vector_black.png);
+  background-image: url(../../../images/hart_black.svg);
  }

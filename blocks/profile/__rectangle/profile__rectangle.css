@@ -1,8 +1,9 @@
 .profile__rectangle {
  background-image: url(../../../images/pen.svg);
+ background-size: 10px;
  background-repeat: no-repeat;
  background-position: center;
- background-color: black;
+ background-color: transparent;
  width: 24px;
  height: 24px;
  border: 1px solid #ffffff;
@@ -18,5 +19,6 @@
  .profile__rectangle {
   width: 18px;
   height: 18px;
+  background-size: 7.5px;
  }
 }

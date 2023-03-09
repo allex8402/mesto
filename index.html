@@ -14,70 +14,58 @@
 <body class="body">
  <div class="page">
   <div class="page__container">
-   <div class="popup">
-    <div class="popup__container">
-     <button class="popup__close-icon"></button>
-     <h3 class="popup__title">Редактировать профиль</h3>
-     <form class="popup__form" action="#">
-      <fieldset class="popup__fieldset"><input class="popup__input popup__input_name" type="text">
-      </fieldset>
-      <fieldset class="popup__fieldset"><input class="popup__input popup__input_job" type="text">
-      </fieldset>
-      <button class="popup__button">Сохранить</button>
-     </form>
-    </div>
-   </div>
+
    <header class="header">
     <img class="header__logo" src="./images/Vector.svg" alt="Логотип страницы">
    </header>
    <main>
     <section class="profile">
-     <img class="profile__avatar" src="./images/image.jpg" alt="Аватарка">
+     <img class="profile__avatar" src="./images/листвянка.jpg" alt="Фотография пользователя">
      <div class="profile__info">
       <div class="profile__card">
-       <h1 class="profile__title">Жак-Ив Кусто</h1>
-       <button class="profile__rectangle"></button>
+       <h1 class="profile__title">Какой то мужик с очень длинным Именем и странной фамилией</h1>
+       <button class="profile__rectangle" type="button"></button>
       </div>
-      <p class="profile__subtitle">Исследователь океана</p>
+      <p class="profile__subtitle">Любитель разной еды и напитков, путешествующий исключительна с гастрономическими
+       целями.</p>
      </div>
-     <button class="profile__button"></button>
+     <button class="profile__button" type="button"></button>
     </section>
     <section class="elements">
      <ul class="elements__container">
-      <li class="element"><img class="element__img" src="./images/khram.jpg" alt="красивое место">
+      <li class="element"><img class="element__img" src="./images/армения.jpg"
+        alt="Фотография семьи с панорамным видом в центре Еревана, Армения">
        <div class="element__content">
-        <h2 class="element__title">Карачаевск</h2><img class="element__hart" src="./images/Vector_(Stroke).png"
-         alt="сердечко для лайка">
+        <h2 class="element__title">Ереван</h2><button type="button" class="element__hart"></button>
        </div>
       </li>
-      <li class="element"><img class="element__img" src="./images/kiril.jpg" alt="красивое место">
+      <li class="element"><img class="element__img" src="./images/в школу.jpg"
+        alt="Фотография ученика с родителями возле школы">
        <div class="element__content">
-        <h2 class="element__title">Карачаевск</h2><img class="element__hart" src="./images/Vector_(Stroke).png"
-         alt="сердечко для лайка">
+        <h2 class="element__title">Снова в школу- шестой класс</h2><button type="button" class="element__hart"></button>
        </div>
       </li>
-      <li class="element"><img class="element__img" src="./images/picks.jpg" alt="красивое место">
+      <li class="element"><img class="element__img" src="./images/грузия.jpg"
+        alt="Фотография семейной пары на фоне горного пейзажа, Грузия">
        <div class="element__content">
-        <h2 class="element__title">Эйяфьядлайёкюдль</h2><img class="element__hart" src="./images/Vector_(Stroke).png"
-         alt="сердечко для лайка">
+        <h2 class="element__title">Грузия</h2><button type="button" class="element__hart"></button>
        </div>
       </li>
-      <li class="element"><img class="element__img" src="./images/pikch.jpg" alt="красивое место">
+      <li class="element"><img class="element__img" src="./images/памуккале.JPG"
+        alt="красивое место рядом с древнем городом Иераполисом. Синее небо. Пальма">
        <div class="element__content">
-        <h2 class="element__title">Кара</h2><img class="element__hart" src="./images/Vector_(Stroke).png"
-         alt="сердечко для лайка">
+        <h2 class="element__title">памуккале</h2><button type="button" class="element__hart"></button>
        </div>
       </li>
-      <li class="element"><img class="element__img" src="./images/vale.jpg" alt="красивое место">
+      <li class="element"><img class="element__img" src="./images/семейная.jpg" alt="Семейная фотосессия на фоне леса">
        <div class="element__content">
-        <h2 class="element__title">Карачаевск</h2><img class="element__hart" src="./images/Vector_(Stroke).png"
-         alt="сердечко для лайка">
+        <h2 class="element__title">Фотосессия</h2><button type="button" class="element__hart"></button>
        </div>
       </li>
-      <li class="element"><img class="element__img" src="./images/valen.jpg" alt="красивое место">
+      <li class="element"><img class="element__img" src="./images/стамбул.JPG"
+        alt="Фотография семейной пары на фоне пруда зелени и пальм в одном из районов Стамбула">
        <div class="element__content">
-        <h2 class="element__title">Карачаевск</h2><img class="element__hart" src="./images/Vector_(Stroke).png"
-         alt="сердечко для лайка">
+        <h2 class="element__title">Стамбул</h2><button type="button" class="element__hart"></button>
        </div>
       </li>
      </ul>
@@ -86,10 +74,22 @@
    <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
    </footer>
-
+   <div class="popup">
+    <div class="popup__container">
+     <button class="popup__close-icon" type="button"></button>
+     <h3 class="popup__title">Редактировать профиль</h3>
+     <form class="popup__form" name="user" action="#">
+      <fieldset class="popup__fieldset" name="personal_info">
+       <input class="popup__input popup__fieldset_input_name" type="text">
+       <input class="popup__input popup__fieldset_input_job" type="text">
+      </fieldset>
+      <button class="popup__button" type="submit">Сохранить</button>
+     </form>
+    </div>
+   </div>
   </div>
  </div>
- <script src="./skrypt.js"></script>
+ <script src="./scripts/index.js"></script>
 </body>
 
 </html>

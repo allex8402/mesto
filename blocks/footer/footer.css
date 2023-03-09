@@ -1,19 +1,18 @@
 .footer {
- max-width: 318px;
- min-width: 282px;
- max-height: 18px;
+ display: block;
+ max-width: 880px;
  min-height: 14px;
- margin: 0;
+ margin: 0 auto;
 }
 
-@media screen and (min-width:321px) and (max-width:1279px) {
+@media screen and (min-width:618px) and (max-width:929px) {
  .footer {
-  margin: 0 auto;
+  max-width: 582px;
  }
 }
 
-@media screen and (max-width:320px) {
+@media screen and (min-width:320px) and (max-width:617px) {
  .footer {
-  margin: 0 0 0 19px;
+  max-width: 282px;
  }
 }
