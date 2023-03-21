@@ -31,52 +31,7 @@
         </section>
         <section class="elements">
           <ul class="elements__container">
-            <li class="element">
-              <img class="element__img" src="./images/армения.jpg"
-                alt="Фотография семьи с панорамным видом в центре Еревана, Армения">
-              <div class="element__content">
-                <h2 class="element__title">Ереван</h2>
-                <button type="button" class="element__hart"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/в_школу.jpg" alt="Фотография ученика с родителями возле школы">
-              <div class="element__content">
-                <h2 class="element__title">Снова в школу- шестой класс</h2>
-                <button type="button" class="element__hart"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/грузия.jpg"
-                alt="Фотография семейной пары на фоне горного пейзажа, Грузия">
-              <div class="element__content">
-                <h2 class="element__title">Грузия</h2>
-                <button type="button" class="element__hart"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/памуккале.JPG"
-                alt="красивое место рядом с древнем городом Иераполисом. Синее небо. Пальма">
-              <div class="element__content">
-                <h2 class="element__title">памуккале</h2>
-                <button type="button" class="element__hart"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/семейная.jpg" alt="Семейная фотосессия на фоне леса">
-              <div class="element__content">
-                <h2 class="element__title">Фотосессия</h2>
-                <button type="button" class="element__hart"></button>
-              </div>
-            </li>
-            <li class="element">
-              <img class="element__img" src="./images/стамбул.JPG"
-                alt="Фотография семейной пары на фоне пруда зелени и пальм в одном из районов Стамбула">
-              <div class="element__content">
-                <h2 class="element__title">Стамбул</h2>
-                <button type="button" class="element__hart"></button>
-              </div>
-            </li>
+
           </ul>
         </section>
       </main>
@@ -96,8 +51,32 @@
           </form>
         </div>
       </div>
+      <div class="popup popup_edit">
+        <div class="popup__container">
+          <button class="popup__close-icon" type="button"></button>
+          <h3 class="popup__title">Новое место</h3>
+          <form class="popup__form popup__form_edit" name="user" action="#">
+            <fieldset class="popup__fieldset" name="personal_info">
+              <input class="popup__input popup__input_type_image" type="text" name="image">
+              <input class="popup__input popup__input_type_link" type="text" name="link">
+            </fieldset>
+            <button class="popup__button" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
+  <template id="image_template">
+    <li class="element">
+      <button type="button" class="element__remove"></button>
+      <img class="element__img" src="" alt="">
+      <div class="element__content">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__hart"></button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 
