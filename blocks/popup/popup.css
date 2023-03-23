@@ -16,38 +16,3 @@
   pointer-events: none;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
-.popup__figure {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  max-height: 540px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  position: relative;
-}
-
-@media screen and (min-width:320px) and (max-width:617px) {
-  .popup__figure {
-    max-width: 282px;
-  }
-}
-
-.popup__image {
-  max-height: 540px;
-}
-
-@media screen and (min-width:320px) and (max-width:617px) {
-  .popup__image {
-    max-width: 282px;
-  }
-}
-
-
-
-/*
-.popup_image {
-
-  border-radius: none;
-
-} */

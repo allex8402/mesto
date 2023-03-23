@@ -1,11 +1,11 @@
-let popup = document.querySelector('.popup');
-let openButton = document.querySelector('.profile__rectangle');
-let closeButton = popup.querySelector('.popup__close-icon');
-let nameInput = popup.querySelector('.popup__input_type_name');
-let jobInput = popup.querySelector('.popup__input_type_job');
-let nameTitle = document.querySelector('.profile__title');
-let jobTitle = document.querySelector('.profile__subtitle');
-let formElement = document.querySelector('.popup__form');
+const popup = document.querySelector('.popup');
+const openButton = document.querySelector('.profile__rectangle');
+const closeButton = popup.querySelector('.popup__close-icon');
+const nameInput = popup.querySelector('.popup__input_type_name');
+const jobInput = popup.querySelector('.popup__input_type_job');
+const nameTitle = document.querySelector('.profile__title');
+const jobTitle = document.querySelector('.profile__subtitle');
+const formElement = document.querySelector('.popup__form');
 
 // первй попап
 function openPopup() {
@@ -85,7 +85,7 @@ closeButtonEdit.addEventListener('click', closePopupEdit);
 
 function createCard(el) {
   const imageTemplate = document.querySelector('#image_template').content;
-  let imageElement = imageTemplate.querySelector('.element').cloneNode(true);
+  const imageElement = imageTemplate.querySelector('.element').cloneNode(true);
   imageElement.querySelector('.element__title').textContent = el.name;
   imageElement.querySelector('.element__img').src = el.link;
   imageElement.querySelector('.element__hart').addEventListener('click', function (evt) {
@@ -100,8 +100,8 @@ function createCard(el) {
   return imageElement;
 }
 initialCards.forEach((el) => {
-  let newCard = createCard(el);
-  document.querySelector('.elements__container').append(newCard);
+  const newCard = createCard(el);
+  imgContainer.prepend(newCard);
 });
 
 function handleFormSubmitCard(evt) {                 //обработать отправку формы
@@ -110,7 +110,7 @@ function handleFormSubmitCard(evt) {                 //обработать от
     name: imageInput.value,
     link: linkInput.value
   });
-  document.querySelector('.elements__container').prepend(addCard);
+  imgContainer.prepend(addCard);
   evt.target.reset();
   closePopupEdit();
 }
@@ -119,15 +119,15 @@ popupForm.addEventListener('submit', handleFormSubmitCard);
 //третий попап
 
 
-const popupImage = document.querySelector('.popup_image');
+const popupImage = document.querySelector('.popup-image');
 const openImg = document.querySelector('.element__img');
-const popupImageCaption = popupImage.querySelector('.popup__title_img');
+const popupImageCaption = popupImage.querySelector('.popup-image__caption');
 const closeBtn = popupImage.querySelector('.popup__close-icon');
 
 
 function openPopupImage(el) {
   popupImage.classList.add('popup_opened');
-  popupImage.querySelector('.popup__img').src = el.link;
+  popupImage.querySelector('.popup-image__img').src = el.link;
   popupImageCaption.textContent = el.name;
 }
 
@@ -138,7 +138,3 @@ function closePopupImage() {
 }
 closeBtn.addEventListener('click', closePopupImage);
 
-//function closePopup() {
-//   popup.classList.remove('popup_opened');
-// }
-// closeButton.addEventListener('click', closePopup); /
