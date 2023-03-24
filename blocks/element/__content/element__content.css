@@ -2,4 +2,5 @@
    display: flex;
    justify-content: space-between;
    padding: 23px 15px 27px 21px;
+   max-height: 79px;
  }

@@ -22,7 +22,7 @@
           <img class="profile__avatar" src="./images/image.jpg" alt="Фотография пользователя">
           <div class="profile__info">
             <div class="profile__card">
-              <h1 class="profile__title">Какой то мужик с очень длинным Именем и странной фамилией</h1>
+              <h1 class="profile__title">Allex </h1>
               <button class="profile__rectangle" type="button"></button>
             </div>
             <p class="profile__subtitle">Любитель разной еды и напитков</p>
@@ -38,14 +38,14 @@
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup__fill">
         <div class="popup__container">
           <button class="popup__close-icon" type="button"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="user" action="#">
             <fieldset class="popup__fieldset" name="personal_info">
-              <input class="popup__input popup__input_type_name" type="text" name="name">
-              <input class="popup__input popup__input_type_job" type="text" name="job">
+              <input class="popup__input popup__input_type_name" type="text" name="name" required>
+              <input class="popup__input popup__input_type_job" type="text" name="job" required>
             </fieldset>
             <button class="popup__button" type="submit">Сохранить</button>
           </form>
@@ -57,8 +57,10 @@
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form popup__form_edit" name="user" action="#">
             <fieldset class="popup__fieldset" name="personal_info">
-              <input class="popup__input popup__input_type_image" type="text" name="image">
-              <input class="popup__input popup__input_type_link" type="text" name="link">
+              <input class="popup__input popup__input_type_image" type="text" name="image" placeholder="Название"
+                required>
+              <input class="popup__input popup__input_type_link" type="text" name="link"
+                placeholder="Ссылка на картинку" required>
             </fieldset>
             <button class="popup__button" type="submit">Сохранить</button>
           </form>
@@ -87,6 +89,7 @@
       </div>
     </li>
   </template>
+  <script src="./scripts/initialCards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 
