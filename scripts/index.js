@@ -1,5 +1,5 @@
 const popup = document.querySelector('.popup');
-const popupFill = document.querySelector('.popup__fill');
+const popupFill = document.querySelector('.popup-fill');
 const openButton = document.querySelector('.profile__rectangle');
 const closeButton = popup.querySelector('.popup__close-icon');
 const nameInput = popup.querySelector('.popup__input_type_name');
@@ -38,7 +38,7 @@ formElement.addEventListener('submit', handleFormSubmit); //следить за 
 // второй попап
 
 const profOpenButton = document.querySelector('.profile__button');
-const popupEdit = document.querySelector('.popup_edit');
+const popupEdit = document.querySelector('.popup-edit');
 const closeButtonEdit = popupEdit.querySelector('.popup__close-icon');
 const imageInput = document.querySelector('.popup__input_type_image');
 const linkInput = document.querySelector('.popup__input_type_link');
