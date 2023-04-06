@@ -29,9 +29,9 @@ closeButton.addEventListener('click', function () { closePopup(popupFill) });   
 
 function handleFormSubmit(evt) {                 //обработать отправку формы
   evt.preventDefault();
-  nameTitle.textContent = nameInput.value;
-  jobTitle.textContent = jobInput.value;
-  closePopup(popupFill)
+  document.querySelector('.profile__title').textContent = nameInput.value;
+  document.querySelector('.profile__subtitle').textContent = jobInput.value;
+  closePopup(popupFill);
 }
 formElement.addEventListener('submit', handleFormSubmit); //следить за событием отправки
 
@@ -97,4 +97,7 @@ function fillPopupImage(el) {
 }
 
 closeBtn.addEventListener('click', function () { closePopup(popupImage) });
+
+
+
 
