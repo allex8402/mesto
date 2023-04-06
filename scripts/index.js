@@ -7,6 +7,16 @@ const jobInput = popup.querySelector('.popup__input_type_job');
 const nameTitle = document.querySelector('.profile__title');
 const jobTitle = document.querySelector('.profile__subtitle');
 const formElement = document.querySelector('.popup__form');
+const profOpenButton = document.querySelector('.profile__button');
+const popupEdit = document.querySelector('.popup-edit');
+const closeButtonEdit = popupEdit.querySelector('.popup__close-icon');
+const imageInput = document.querySelector('.popup__input_type_image');
+const linkInput = document.querySelector('.popup__input_type_link');
+const imgContainer = document.querySelector('.elements__container');
+const popupForm = popupEdit.querySelector('.popup__form_edit');
+const popupImage = document.querySelector('.popup-image');
+const popupImageCaption = popupImage.querySelector('.popup-image__caption');
+const closeBtn = popupImage.querySelector('.popup__close-icon');
 
 // первый попап
 const openPopup = function (popup) {
@@ -14,8 +24,32 @@ const openPopup = function (popup) {
 }
 
 const closePopup = function (popup) {
-  popup.classList.remove('popup_opened');  // закрытие попап
+  popup.classList.remove('popup_opened');
+  // закрытие попап
 }
+
+const closeOverlay = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+}
+popup.addEventListener('mousedown', closeOverlay);
+popupEdit.addEventListener('mousedown', closeOverlay);
+popupImage.addEventListener('mousedown', closeOverlay);
+
+const closeEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+}
+document.addEventListener('keydown', closeEsc);
+
 
 function fillPopup() {
   openPopup(popupFill);
@@ -41,14 +75,6 @@ formElement.addEventListener('submit', handleFormSubmit); //следить за 
 
 // второй попап
 
-const profOpenButton = document.querySelector('.profile__button');
-const popupEdit = document.querySelector('.popup-edit');
-const closeButtonEdit = popupEdit.querySelector('.popup__close-icon');
-const imageInput = document.querySelector('.popup__input_type_image');
-const linkInput = document.querySelector('.popup__input_type_link');
-const imgContainer = document.querySelector('.elements__container');
-const popupForm = popupEdit.querySelector('.popup__form_edit');
-const popupImage = document.querySelector('.popup-image');
 
 profOpenButton.addEventListener('click', function () { openPopup(popupEdit) });//- добавили второй попап
 closeButtonEdit.addEventListener('click', function () { closePopup(popupEdit) });
@@ -90,8 +116,6 @@ popupForm.addEventListener('submit', handleFormSubmitCard);
 
 //третий попап
 
-const popupImageCaption = popupImage.querySelector('.popup-image__caption');
-const closeBtn = popupImage.querySelector('.popup__close-icon');
 
 function fillPopupImage(el) {
   openPopup(popupImage)
@@ -111,6 +135,3 @@ const enableValidation = {
   errorClass: 'popup__input-error_active'
 };
 enableValidations(enableValidation);
-
-
-
