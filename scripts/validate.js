@@ -1,20 +1,10 @@
-const enableValidation = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-};
+
 
 const enableValidations = ({ formSelector, ...rest }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
     setEventListeners(formElement, rest);
-  });
+  })
 };
 
 const setEventListeners = (formElement, { inputSelector, submitButtonSelector, ...rest }) => {
@@ -75,4 +65,4 @@ const toggleButtonState = (inputList, buttonElement, { inactiveButtonClass }) =>
   }
 };
 
-enableValidations(enableValidation);
+

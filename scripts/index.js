@@ -23,14 +23,18 @@ function fillPopup() {
   jobInput.value = jobTitle.textContent;
 }
 
-openButton.addEventListener('click', function () { fillPopup() });
+openButton.addEventListener('click', function () {
+  fillPopup()
+});
 
-closeButton.addEventListener('click', function () { closePopup(popupFill) });   /*открытие закрытие попап*/
+closeButton.addEventListener('click', function () {
+  closePopup(popupFill);
+});   /*открытие закрытие попап*/
 
 function handleFormSubmit(evt) {                 //обработать отправку формы
   evt.preventDefault();
-  document.querySelector('.profile__title').textContent = nameInput.value;
-  document.querySelector('.profile__subtitle').textContent = jobInput.value;
+  nameTitle.textContent = nameInput.value;
+  jobTitle.textContent = jobInput.value;
   closePopup(popupFill);
 }
 formElement.addEventListener('submit', handleFormSubmit); //следить за событием отправки
@@ -98,6 +102,15 @@ function fillPopupImage(el) {
 
 closeBtn.addEventListener('click', function () { closePopup(popupImage) });
 
+const enableValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
+enableValidations(enableValidation);
 
 
 
