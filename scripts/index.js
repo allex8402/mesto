@@ -1,22 +1,29 @@
+//popup
 const popup = document.querySelector('.popup');
 const popupFill = document.querySelector('.popup-fill');
-const openButton = document.querySelector('.profile__rectangle');
 const closeButton = popup.querySelector('.popup__close-icon');
 const nameInput = popup.querySelector('.popup__input_type_name');
 const jobInput = popup.querySelector('.popup__input_type_job');
 const nameTitle = document.querySelector('.profile__title');
 const jobTitle = document.querySelector('.profile__subtitle');
 const formElement = document.querySelector('.popup__form');
-const profOpenButton = document.querySelector('.profile__button');
+//popup-edit
 const popupEdit = document.querySelector('.popup-edit');
 const closeButtonEdit = popupEdit.querySelector('.popup__close-icon');
 const imageInput = document.querySelector('.popup__input_type_image');
 const linkInput = document.querySelector('.popup__input_type_link');
 const imgContainer = document.querySelector('.elements__container');
 const popupForm = popupEdit.querySelector('.popup__form_edit');
+//popup-image
 const popupImage = document.querySelector('.popup-image');
 const popupImageCaption = popupImage.querySelector('.popup-image__caption');
 const closeBtn = popupImage.querySelector('.popup__close-icon');
+//other
+const profileRectangleBtn = document.querySelector('.profile__rectangle');
+const profOpenButton = document.querySelector('.profile__button');
+
+
+
 
 // первый попап
 const openPopup = function (popup) {
@@ -57,7 +64,7 @@ function fillPopup() {
   jobInput.value = jobTitle.textContent;
 }
 
-openButton.addEventListener('click', function () {
+profileRectangleBtn.addEventListener('click', function () {
   fillPopup()
 });
 
