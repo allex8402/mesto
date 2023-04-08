@@ -28,12 +28,11 @@ const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);// открытие попап
 }
-
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeEsc);
   // закрытие попап
 }
-
 const closeOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
     const openedPopup = document.querySelector('.popup_opened');
@@ -45,7 +44,6 @@ const closeOverlay = (evt) => {
 popupEditProfile.addEventListener('mousedown', closeOverlay);
 popupAddCard.addEventListener('mousedown', closeOverlay);
 popupImage.addEventListener('mousedown', closeOverlay);
-
 const closeEsc = (evt) => {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
@@ -54,23 +52,17 @@ const closeEsc = (evt) => {
     }
   }
 }
-
-
-
-function fillPopup() {
+function openEditProfilePopup() {
   openPopup(popupEditProfile);
   nameInput.value = nameTitle.textContent; //заполнить поля формы значениями на странице
   jobInput.value = jobTitle.textContent;
 }
-
 profileRectangleBtn.addEventListener('click', function () {
-  fillPopup()
+  openEditProfilePopup()
 });
-
 buttonCloseEditProfilePopup.addEventListener('click', function () {
   closePopup(popupEditProfile);
 });   /*открытие закрытие попап*/
-
 function submitEditProfileForm(evt) {                 //обработать отправку формы
   evt.preventDefault();
   nameTitle.textContent = nameInput.value;
@@ -78,35 +70,30 @@ function submitEditProfileForm(evt) {                 //обработать о�
   closePopup(popupEditProfile);
 }
 formEditProfile.addEventListener('submit', submitEditProfileForm); //следить за событием отправки
-
 // второй попап
-
 buttonOpenAddCardPopup.addEventListener('click', function () { openPopup(popupAddCard) });//- добавили второй попап
 buttonCloseAddCardPopup.addEventListener('click', function () { closePopup(popupAddCard) });
-
 function createCard(el) {
   const imageElement = imageTemplate.querySelector('.element').cloneNode(true);
+  const imageElementImg = imageElement.querySelector('.element__img');
   imageElement.querySelector('.element__title').textContent = el.name;
-  imageElement.querySelector('.element__img').src = el.link;
-  imageElement.querySelector('.element__img').alt = el.name;
+  imageElementImg.src = el.link;
+  imageElementImg.alt = el.name;
   imageElement.querySelector('.element__hart').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__hart_active');
   });
   imageElement.querySelector('.element__remove').addEventListener('click', function () {
     imageElement.remove()
   });
-  imageElement.querySelector('.element__img').addEventListener('click', function () {
-    fillPopupImage(el)
+  imageElementImg.addEventListener('click', function () {
+    openEditProfilePopupImage(el)
   });
-
   return imageElement;
 }
-
 initialCards.forEach((el) => {
   const newCard = createCard(el);
   imgContainer.prepend(newCard);
 });
-
 function handleFormSubmitCard(evt) {                 //обработать отправку формы
   evt.preventDefault();
   const addCard = createCard({
@@ -116,20 +103,17 @@ function handleFormSubmitCard(evt) {                 //обработать от
   imgContainer.prepend(addCard);
   evt.target.reset();
   closePopup(popupAddCard);
+  enableValidations(validationConfig);
 }
 formAddCard.addEventListener('submit', handleFormSubmitCard);
-
 //третий попап
-
-function fillPopupImage(el) {
+function openEditProfilePopupImage(el) {
   openPopup(popupImage)
   popupImageElement.src = el.link;
   popupImageElement.alt = el.name;
   popupImageCaption.textContent = el.name;
 }
-
 buttonCloseImagePopup.addEventListener('click', function () { closePopup(popupImage) });
-
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -139,3 +123,5 @@ const validationConfig = {
   errorClass: 'popup__input-error_active'
 };
 enableValidations(validationConfig);
+
+
