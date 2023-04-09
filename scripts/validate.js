@@ -1,5 +1,3 @@
-
-
 const enableValidations = ({ formSelector, ...rest }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
@@ -9,11 +7,15 @@ const enableValidations = ({ formSelector, ...rest }) => {
 const setEventListeners = (formElement, { inputSelector, submitButtonSelector, ...rest }) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, rest);
+  disableSubmitButton(buttonElement, rest)
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, rest);
-      toggleButtonState(inputList, buttonElement, rest);
+      if (hasInvalidInput(inputList)) {
+        disableSubmitButton(buttonElement, rest)
+      } else {
+        enableSubmitButton(buttonElement, rest)
+      };
     });
   });
 };
@@ -41,14 +43,14 @@ const checkInputValidity = (formElement, inputElement, { inputErrorClass, errorC
     hideInputError(formElement, inputElement, { inputErrorClass, errorClass });
   }
 };
-const toggleButtonState = (inputList, buttonElement, { inactiveButtonClass }) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
-  }
-};
-
-
+//
+const enableSubmitButton = (buttonElement, { inactiveButtonClass, submitButtonSelector }) => {
+  buttonElement.classList.add(submitButtonSelector);
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute('disabled');
+}
+const disableSubmitButton = (buttonElement, { inactiveButtonClass, submitButtonSelector }) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.classList.remove(submitButtonSelector);
+  buttonElement.setAttribute('disabled', true);
+}

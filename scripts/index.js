@@ -19,6 +19,7 @@ const popupImage = document.querySelector('.popup-image');
 const popupImageCaption = popupImage.querySelector('.popup-image__caption');
 const buttonCloseImagePopup = popupImage.querySelector('.popup__close-icon');
 const popupImageElement = popupImage.querySelector('.popup-image__img')
+const buttonAddCard = popupAddCard.querySelector('.popup__button')
 //other
 const profileRectangleBtn = document.querySelector('.profile__rectangle');
 const buttonOpenAddCardPopup = document.querySelector('.profile__button');
@@ -26,7 +27,8 @@ const imageTemplate = document.querySelector('#image_template').content;
 // первый попап
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeEsc);// открытие попап
+  document.addEventListener('keydown', closeEsc);
+  // открытие попап
 }
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
@@ -73,6 +75,7 @@ formEditProfile.addEventListener('submit', submitEditProfileForm); //следи�
 // второй попап
 buttonOpenAddCardPopup.addEventListener('click', function () { openPopup(popupAddCard) });//- добавили второй попап
 buttonCloseAddCardPopup.addEventListener('click', function () { closePopup(popupAddCard) });
+
 function createCard(el) {
   const imageElement = imageTemplate.querySelector('.element').cloneNode(true);
   const imageElementImg = imageElement.querySelector('.element__img');
@@ -94,7 +97,7 @@ initialCards.forEach((el) => {
   const newCard = createCard(el);
   imgContainer.prepend(newCard);
 });
-function handleFormSubmitCard(evt) {                 //обработать отправку формы
+function handleFormSubmitCard(evt) {                   //обработать отправку формы
   evt.preventDefault();
   const addCard = createCard({
     name: imageInput.value,
@@ -103,7 +106,7 @@ function handleFormSubmitCard(evt) {                 //обработать от
   imgContainer.prepend(addCard);
   evt.target.reset();
   closePopup(popupAddCard);
-  enableValidations(validationConfig);
+  disableSubmitButton(buttonAddCard, { inactiveButtonClass: 'popup__button_inactive', submitButtonSelector: '.popup__button' });
 }
 formAddCard.addEventListener('submit', handleFormSubmitCard);
 //третий попап
