@@ -23,16 +23,18 @@ export class FormValidator {
   }
   _setEventListeners() {
     const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._inputList = inputList
     const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    this.disableSubmitButton(buttonElement)
-    inputList.forEach((inputElement) => {
+    this._buttonElement = buttonElement
+    this.disableSubmitButton(this._buttonElement)
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
 
-        if (this._hasInvalidInput(inputList)) {
-          this.disableSubmitButton(buttonElement)
+        if (this._hasInvalidInput(this._inputList)) {
+          this.disableSubmitButton(this._buttonElement)
         } else {
-          this._enableSubmitButton(buttonElement)
+          this._enableSubmitButton(this._buttonElement)
         }
       });
     });
@@ -47,18 +49,18 @@ export class FormValidator {
       this._hideInputError(inputElement);
     }
   }
-  disableSubmitButton = (buttonElement) => {
-    buttonElement.classList.add(this._inactiveButtonClass);
-    buttonElement.classList.remove(this._submitButtonSelector);
-    buttonElement.setAttribute('disabled', true);
+  disableSubmitButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.classList.remove(this._submitButtonSelector);
+    this._buttonElement.setAttribute('disabled', true);
   }
-  _enableSubmitButton(buttonElement) {
-    buttonElement.classList.add(this._submitButtonSelector);
-    buttonElement.classList.remove(this._inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
+  _enableSubmitButton() {
+    this._buttonElement.classList.add(this._submitButtonSelector);
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.removeAttribute('disabled');
   }
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }

@@ -1,5 +1,6 @@
-export { openPopup, closePopup, closeOverlay, closeEsc }
+export { openPopup, closeEsc }
 
+const popups = document.querySelectorAll('.popup')
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);
@@ -10,17 +11,21 @@ const closePopup = function (popup) {
   document.removeEventListener('keydown', closeEsc);
   // закрытие попап
 }
-const closeOverlay = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    const openedPopup = document.querySelector('.popup_opened');
-    if (openedPopup) {
-      closePopup(openedPopup);
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
     }
-  }
-}
+    if (evt.target.classList.contains('popup__close-icon')) {
+      closePopup(popup)
+    }
+  })
+})
+
 const closeEsc = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
     if (openedPopup) {
       closePopup(openedPopup);
     }
