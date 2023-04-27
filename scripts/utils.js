@@ -1,4 +1,4 @@
-export { openPopup, closeEsc }
+export { openPopup, closeEsc, closePopup }
 
 const popups = document.querySelectorAll('.popup')
 const openPopup = function (popup) {
@@ -24,8 +24,8 @@ popups.forEach((popup) => {
 })
 
 const closeEsc = (evt) => {
-  const openedPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
     if (openedPopup) {
       closePopup(openedPopup);
     }
