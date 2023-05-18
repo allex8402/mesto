@@ -1,5 +1,5 @@
 # Проектная работа
-https://allex8402.github.io/mesto
+https://allex8402.github.io/mesto /
 
 
 
