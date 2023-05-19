@@ -5,6 +5,7 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
+import { Api } from '../components/Api.js';
 import {
   formEditProfile,
   formAddCard,
@@ -24,25 +25,52 @@ const config = {
 
 const {
   nameSelector,
-  jobSelector
+  aboutSelector,
+  avatarSelector
 } = {
   nameSelector: '.profile__title',
-  jobSelector: '.profile__subtitle'
+  aboutSelector: '.profile__subtitle',
+  avatarSelector: '.profile__avatar'
 };
+let userId;
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-66',
+  headers: {
+    authorization: 'ea1a8b8d-6317-47fd-a20b-0ce7b90a2f01',
+    'Content-Type': 'application/json'
+  }
+});
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([initialCards, userData]) => {
+    userInfo.setUserInfo(userData);
+    userId = userData._id;
+    cardsList.renderItems(initialCards);
+  })
+  .catch((err) => {
+    console.log(`Ошибка: ${err}`);
+  });
 
 const userInfo = new UserInfo({
   nameSelector,
-  jobSelector
+  aboutSelector,
+  avatarSelector
 });
 
-const userData = userInfo.getUserInfo();
-userInfo.setUserInfo(userData);
+// const userData = userInfo.getUserInfo();
+// // // userInfo.setUserInfo(userData);
 
-const popupWithFormProfile = new PopupWithForm(
-  '.popup_edit-profile', (formData) => {
-    userInfo.setUserInfo(formData);
-  }
-);
+const popupWithFormProfile = new PopupWithForm('.popup_edit-profile', (formData) => {
+  api.editProfile(formData)
+    .then((formData) => {
+      userInfo.setUserInfo(formData);
+      popupWithFormProfile.close();
+    })
+    .catch((err) => {
+      console.log(`Ошибка: ${err}`);
+    });
+});
 
 popupWithFormProfile.setEventListeners();
 
@@ -87,10 +115,12 @@ const cardsList = new Section({
   }
 }, '.elements__container');
 
-cardsList.renderItems();
+// cardsList.renderItems();
 
 const formEditProfileValidator = new FormValidator(config, formEditProfile);
 formEditProfileValidator.enableValidation();
 
 const formAddNewCardValidator = new FormValidator(config, formAddCard);
 formAddNewCardValidator.enableValidation();
+
+
