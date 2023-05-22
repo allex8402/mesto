@@ -11,7 +11,7 @@ import {
   formAddCard,
   profileRectangleBtn,
   buttonOpenAddCardPopup,
-
+  buttonEditAvatar
 } from '../utils/constants.js';
 
 const config = {

@@ -4,7 +4,7 @@ export const {
   formAddCard,
   profileRectangleBtn,
   buttonOpenAddCardPopup,
-
+  buttonEditAvatar,
 } = {
   formEditProfile: document.forms['user'],
   formAddCard: document.forms['card'],
