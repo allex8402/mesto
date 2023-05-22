@@ -2,6 +2,9 @@ export class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
+    this._userId = userId;
+    this._cardId = data._id;
+    this._cardOwnerId = data.owner._id;
     this._templateSelector = templateSelector;
     this._popupImage = document.querySelector('.popup-image');
     this._popupImg = this._popupImage.querySelector('.popup-image__img');

@@ -3,29 +3,27 @@ export class Api {
     this.baseUrl = options.baseUrl;
     this.headers = options.headers;
   }
+
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка:${res.status}`);
+  }
+
   //загрузка информации о пользователе с сервера
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка:${res.status}`);
-      })
+      .then(res => this._handleResponse(res))
   }
   //Получить карточки
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка:${res.status}`);
-      })
+      .then(res => this._handleResponse(res))
   }
 
   // Редактирование профиля
@@ -38,14 +36,30 @@ export class Api {
         about: data.about
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(res => this._handleResponse(res))
   }
-
-
+  // новая карточка
+  addNewCard(data) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: data.image,
+        link: data.link
+      })
+    })
+      .then(res => this._handleResponse(res))
+  }
+  // обновление аватара
+  editAvatar(data) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: data.avatar
+      })
+    })
+      .then(res => this._handleResponse(res))
+  }
 } //закрытие класса
 

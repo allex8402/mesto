@@ -17,10 +17,13 @@
       </header>
       <main>
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Фотография пользователя">
+          <div class="profile__avatar">
+            <img src="<%=require('./images/image.jpg')%>" alt="Фотография пользователя">
+            <button class="profile__avatar-button"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__card">
-              <h1 class="profile__title">Allex </h1>
+              <h1 class="profile__title">Allex</h1>
               <button class="profile__rectangle" type="button"></button>
             </div>
             <p class="profile__subtitle">Любитель разной еды и напитков</p>
@@ -35,6 +38,20 @@
       <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
+      <div class="popup popup_edit-avatar">
+        <div class="popup__container">
+          <button class="popup__close-icon" type="button"></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form form" name="avatar" action="#" novalidate>
+            <fieldset class="popup__fieldset" name="personal_info">
+              <input class="popup__input popup__input_type_avatar" id="avatar" type="url" name="avatar"
+                placeholder="Ссылка на картинку" required>
+              <span class="avatar-error error"></span>
+            </fieldset>
+            <button class="popup__button" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
       <div class="popup popup_edit-profile">
         <div class="popup__container">
           <button class="popup__close-icon" type="button"></button>
@@ -44,7 +61,7 @@
               <input id="name" class="popup__input popup__input_type_name" type="text" name="name" required
                 minlength="2" maxlength="40">
               <span class="name-error error"></span>
-              <input id="job" class="popup__input popup__input_type_job" type="text" name="job" required minlength="2"
+              <input id="job" class="popup__input popup__input_type_job" type="text" name="about" required minlength="2"
                 maxlength="200">
               <span class="job-error error"></span>
             </fieldset>
@@ -93,6 +110,7 @@
       <div class="element__content">
         <h2 class="element__title"></h2>
         <button type="button" class="element__hart"></button>
+        <span class="element__likes">0</span>
       </div>
     </li>
   </template>
