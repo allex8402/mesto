@@ -83,23 +83,23 @@ profileRectangleBtn.addEventListener('click', () => {
 });
 
 // попап аватар
-const editAvatarPopup = new PopupWithForm(
+const popupEditAvatar = new PopupWithForm(
   '.popup_edit-avatar', (data) => {
-    editAvatarPopup.renderLoading(true);
+    popupEditAvatar.renderLoading(true);
     api.editAvatar(data)
       .then((data) => {
-        avatar.src = data.avatar;
-        editAvatarPopup.close();
+        userInfo.setUserInfo(data);
+        popupEditAvatar.close();
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`)
       })
-      .finally(() => editAvatarPopup.renderLoading(false));
+      .finally(() => popupEditAvatar.renderLoading(false));
   });
-editAvatarPopup.setEventListeners();
+popupEditAvatar.setEventListeners();
 
 buttonEditAvatar.addEventListener('click', () => {
-  editAvatarPopup.open();
+  popupEditAvatar.open();
   formEditAvatarValidator.disableSubmitButton();
 });
 
