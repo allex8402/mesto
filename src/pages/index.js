@@ -186,7 +186,6 @@ const cardsList = new Section({
   }
 }, '.elements__container');
 
-
 // валидация
 const formEditProfileValidator = new FormValidator(config, formEditProfile);
 formEditProfileValidator.enableValidation();

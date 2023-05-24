@@ -48,8 +48,6 @@ export class Card {
     this._element = null;
   }
 
-
-
   setLikes(newData) {
     this._likes = newData.likes;
     this.setLikesView();
@@ -71,6 +69,7 @@ export class Card {
       return item._id === this._userId;
     });
   }
+
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
@@ -87,5 +86,4 @@ export class Card {
     this.setLikesView();
     return this._element;
   }
-
 }
