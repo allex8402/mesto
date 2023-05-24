@@ -1,6 +1,6 @@
  .element__content {
    display: flex;
    justify-content: space-between;
-   padding: 23px 15px 27px 21px;
+   padding: 17px 21px 20px;
    max-height: 79px;
  }

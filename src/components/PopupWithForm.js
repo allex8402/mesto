@@ -6,7 +6,7 @@ export class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector('.popup__form');
     this._inputList = this._form.querySelectorAll('.popup__input');
-    this._submitButton = this._form.querySelector('.popup__submit-button');
+    this._submitButton = this._form.querySelector('.popup__button');
   }
 
   _getInputValues() {
@@ -24,6 +24,15 @@ export class PopupWithForm extends Popup {
       }
     });
   }
+  renderLoading(isLoading) {
+
+    if (isLoading) {
+      this._submitButton.textContent = 'Сохранение...';
+    } else {
+      this._submitButton.textContent = 'Сохранить';
+    }
+  }
+
 
   setEventListeners() {
     super.setEventListeners();

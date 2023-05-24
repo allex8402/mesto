@@ -61,5 +61,29 @@ export class Api {
     })
       .then(res => this._handleResponse(res))
   }
+  // удаление карточки
+  deleteCard(id) {
+    return fetch(`${this.baseUrl}/cards/${id}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+      .then(res => this._handleResponse(res))
+  }
+  // поставить лайк
+  addLikeCard(id) {
+    return fetch(`${this.baseUrl}/cards/${id}/likes`, {
+      method: 'PUT',
+      headers: this.headers,
+    })
+      .then(res => this._handleResponse(res))
+  }
+  // удалить лайк
+  deleteLikeCard(id) {
+    return fetch(`${this.baseUrl}/cards/${id}/likes`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+      .then(res => this._handleResponse(res))
+  }
 } //закрытие класса
 
