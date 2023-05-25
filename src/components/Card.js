@@ -6,8 +6,7 @@ export class Card {
     this._cardId = data._id;
     this._cardOwnerId = data.owner._id;
     this._templateSelector = templateSelector;
-    this._popupImg = document.querySelector('.popup-image__img');
-    this._popupCaption = document.querySelector('.popup-image__caption');
+
     this._handleCardClick = handleCardClick
     this._handleDeleteClick = handleDeleteClick
     this._handleLikeClick = handleLikeClick
