@@ -127,26 +127,15 @@ const createCard = (data) => {
       deletePopup.open();
     },
     () => {
-      console.log(data._id)
-      if (!newCard.hasUserLiked()) {
-        api.addLikeCard(data._id)
-          .then((data) => {
-            newCard.setLikes(data);
-            newCard.setLikesView();
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      } else {
-        api.deleteLikeCard(data._id)
-          .then((data) => {
-            newCard.setLikes(data);
-            newCard.setLikesView();
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      }
+      const likeAction = !newCard.hasUserLiked() ? api.addLikeCard(data._id) : api.deleteLikeCard(data._id);
+      likeAction
+        .then((data) => {
+          newCard.setLikes(data);
+          newCard.setLikesView();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     userId)
   return newCard.generateCard();
@@ -158,7 +147,7 @@ const popupWithFormAddCard = new PopupWithForm(
     popupWithFormAddCard.renderLoading(true);
     api.addNewCard(data)
       .then((data) => {
-        cardsList.addItem(createCard(data));
+        cardsList.addItem(data);
         popupWithFormAddCard.close();
       })
       .catch((err) => {
@@ -180,11 +169,9 @@ popupWithImage.setEventListeners();
 
 // экземпляр класса Section
 const cardsList = new Section({
-  renderer: (card) => {
-    const cardElement = createCard(card);
-    cardsList.addItem(cardElement);
-  }
-}, '.elements__container');
+  renderer: (card) => createCard(card)
+}
+  , '.elements__container');
 
 // валидация
 const formEditProfileValidator = new FormValidator(config, formEditProfile);

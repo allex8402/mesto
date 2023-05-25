@@ -24,6 +24,10 @@ export class PopupWithForm extends Popup {
       }
     });
   }
+  close() {
+    super.close()
+    this._form.reset();
+  }
 
   renderLoading(isLoading) {
     if (isLoading) {
@@ -38,12 +42,8 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (event) => {
       event.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this.close();
     });
   }
 
-  close() {
-    super.close();
-    this._form.reset();
-  }
+
 }
